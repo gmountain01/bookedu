@@ -9,6 +9,8 @@ const here = (p) => fileURLToPath(new URL(p, import.meta.url)).split('\\').join(
 // One JS chunk + one CSS file, so scripts/inline.mjs can fold them into dist/index.html.
 export default defineConfig({
   base: './',
+  // W-052: the header shows when this build was made (Korean date, fixed at build time).
+  define: { __BUILD_DATE__: JSON.stringify(new Date().toLocaleDateString('sv-SE', { timeZone: 'Asia/Seoul' })) },
   resolve: {
     // the whole specifier is replaced (a partial match would leave '..' in front of the absolute path)
     alias: PUBLIC ? [{ find: /^.*\/pages\/admin\.js$/, replacement: here('./src/pages/admin.public.js') }] : [],

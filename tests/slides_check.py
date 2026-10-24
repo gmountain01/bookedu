@@ -9,7 +9,7 @@ LAB = Path(__file__).resolve().parent.parent
 URL = (LAB / 'dist' / 'index.html').as_uri()
 OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else LAB / 'docs' / 'evidence' / 'slides'
 OUT.mkdir(parents=True, exist_ok=True)
-WANT = {'만드는 과정은 멀다': 'why', '보완할 점과 다음 계획': 'next'}
+WANT = {'만드는 과정은 멀다': 'why', '다음 계획': 'next'}  # W-050: the next slide is now titled 「보완한 것과 다음 계획」
 MEASURE = """() => { const s = document.querySelector('.slide'); const r = s.getBoundingClientRect();
   const z = r.width / s.offsetWidth;
   const over = [...s.querySelectorAll('*')].filter((e) => e.scrollHeight > e.clientHeight + 2 && getComputedStyle(e).overflow !== 'visible').length

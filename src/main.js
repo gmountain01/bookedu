@@ -97,6 +97,7 @@ async function boot() {
   $('#app').append(
     h('header', { class: 'site-head' },
       h('a', { class: 'brand', href: '#/journey' }, h('span', { class: 'brand-mark', 'aria-hidden': 'true' }), '책공방'),
+      h('span', { class: 'build-date' }, `업데이트 ${__BUILD_DATE__}`),
       nav, modeBadge, headBack, saveState),
     main, footer);
 
