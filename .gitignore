@@ -1,0 +1,30 @@
+# build output and dependencies
+node_modules/
+dist/
+# the local single-file build (holds the admin presentation data)
+/책공방.html
+
+# private records: never published (W-046)
+docs/*
+!docs/SOURCES.md
+.claude/
+CLAUDE.md
+src/data/process.json
+src/data/prompts.json
+src/pages/admin.js
+src/pages/adminProcess.js
+src/pages/adminPrompts.js
+src/pages/deck.js
+scripts/user_prompts_refined.json
+scripts/build_records.py
+*.before-*
+
+# secrets, environments, temp
+.env
+.env.*
+*.pem
+*.key
+__pycache__/
+*.pyc
+Thumbs.db
+.DS_Store

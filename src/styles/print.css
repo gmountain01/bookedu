@@ -1,0 +1,30 @@
+#print-root { display: none; }
+
+@media print {
+  body { background: #fff; }
+  body[data-print] #app, body[data-print] #toast, body[data-print] dialog, body[data-print] .skip { display: none !important; }
+  body[data-print] #print-root { display: block; }
+
+  /* student book (W-033): the same sequence and book.css as the preview, one CSS page per book page.
+     Page size, mirrored margins and folios come from the @page rules written by prepareBookPrint(). */
+  body[data-print='book'] { margin: 0; }
+  body[data-print='book'] .book-print { --mm: 1mm; display: block; }
+  body[data-print='book'] .book-print > .bk-sec { break-before: page; }
+  body[data-print='book'] .book-print > .bk-sec[data-page='plain'] { page: plain; }
+  body[data-print='book'] .book-print .bk-body > .bk-h1:not(:first-child) { break-before: page; }
+  body[data-print='book'] .book-print > .pg-cover { page: cover; width: auto; height: calc(var(--ph) * 1mm); overflow: hidden; }
+  body[data-print='book'] .book-print > .pg-back { break-before: page; }
+  body[data-print='book'] .book-print .bk-blank { break-before: page; page: plain; }
+  body[data-print='book'] .book-print * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body[data-print='book'] .book-print a { color: inherit; text-decoration: none; }
+
+  /* admin deck: each 1280×720 slide on its own 16:9 page, same layout as on screen */
+  @page deck { size: 338.67mm 190.5mm; margin: 0; }
+  body[data-print='deck'] #print-root { width: 1280px; overflow: hidden; }
+  body[data-print='deck'] .print-slide { page: deck; break-after: page; width: 1280px; height: 720px; overflow: hidden; }
+  body[data-print='deck'] .print-slide .sl-main, body[data-print='deck'] .print-slide .sl-box, body[data-print='deck'] .print-slide pre { overflow: hidden; }
+  body[data-print='deck'] .print-slide button.chip { display: inline-block; }
+  body[data-print='deck'] .print-slide .pbox-head .btn { display: none; }
+  body[data-print='deck'] .print-slide * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body[data-print='deck'] .print-slide { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
